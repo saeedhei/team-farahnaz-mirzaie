@@ -26,7 +26,7 @@
   {
     "id": 5,
     "title": "Mercedes-AMG GT",
-    "image": "https://images.unsplash.com/photo-1618843479313-7fdeffcf8dc4?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80",
     "description": "A striking blend of luxury and raw performance, equipped with a handcrafted biturbo V8 engine."
   },
   {
@@ -38,7 +38,7 @@
   {
     "id": 7,
     "title": "Chevrolet Corvette Stingray",
-    "image": "https://images.unsplash.com/photo-1621360818042-b44e4586d38e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80",
     "description": "Revolutionary mid-engine sports car delivering supercar performance at an accessible price point."
   },
   {
@@ -68,9 +68,7 @@
   {
     "id": 12,
     "title": "McLaren 720S",
-    "image": "https://images.unsplash.com/photo-1629897048971-84f1b2c15f61?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80",
     "description": "Ultra-lightweight supercar built on a carbon-fiber tub with dihedral doors and astonishing speed."
   }
 ]
-
-

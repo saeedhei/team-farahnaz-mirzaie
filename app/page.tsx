@@ -1,5 +1,5 @@
 import Image from 'next/image';
-  import carsData from './cars.json';
+import carsData from './cars.json';
 
 export default function Home() {
   return (
@@ -20,6 +20,7 @@ export default function Home() {
                   src={car.image}
                   alt={car.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 400px"
                   className="object-cover"
                 />
               </div>
@@ -34,4 +35,3 @@ export default function Home() {
     </main>
   );
 }
-
