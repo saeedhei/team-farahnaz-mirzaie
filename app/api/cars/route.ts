@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { ticketsDB } from '@/lib/couchdb';
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), 'data/cars/cars.json');
-    const fileData = fs.readFileSync(filePath, 'utf8');
-    const cars = JSON.parse(fileData);
+    const result = await ticketsDB.list({ include_docs: true });
+    const cars = result.rows.map((row: any) => row.doc);
 
     return NextResponse.json(cars);
   } catch (error) {
