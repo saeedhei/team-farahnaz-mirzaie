@@ -11,3 +11,10 @@
 ## 3. Config File Structure Error and Server Disconnection
 * *Problem:* Extra code existed in the next.config.ts file, and the development server stopped (ERR_CONNECTION_REFUSED).
 * *Solution:* Cleaned up the configuration code and restarted the development server using the npm run dev command
+## 4. Untracked .agents Folder Error
+* *Problem:* The system generated an unwanted .agents folder/file that was accidentally tracked.
+* *Solution:* Used git commands to remove it from tracking and committed the change.
+* *Successful Commands Executed:*
+```bash
+git rm -r --cached .agents
+git commit -m "Remove .agents from repositorygity"
