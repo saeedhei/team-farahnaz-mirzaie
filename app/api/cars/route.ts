@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { ticketsDB } from '@/lib/couchdb';
+import { ticketsDB } from '../../lib/couchdb';
 
 export async function GET() {
   try {
