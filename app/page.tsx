@@ -1,7 +1,21 @@
 import Image from 'next/image';
-  import carsData from './cars.json';
 
-export default function Home() {
+// تابعی برای گرفتن اطلاعات ماشین‌ها از API که ساختید
+async function getCars() {
+  try {
+    // اگر روی لوکال‌هاست هستید یا مسیر نسبی
+    const res = await fetch('http://localhost:3000/api/cars', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Failed to fetch cars');
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const carsData = await getCars();
+
   return (
     <main className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -10,10 +24,10 @@ export default function Home() {
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {carsData.map((car) => (
+          {carsData.map((car: any) => (
             <div
-              key={car.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              key={car._id || car.id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               <div className="relative h-48 w-full">
                 <Image
@@ -34,4 +48,3 @@ export default function Home() {
     </main>
   );
 }
-
