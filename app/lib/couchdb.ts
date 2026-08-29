@@ -5,4 +5,28 @@ if (!process.env.COUCH_URL) {
 }
 
 export const couch = nano(process.env.COUCH_URL);
-export const cars_db = couch.db.use('cars_db');
+
+const DB_NAME = 'cars_db';
+
+async function ensureDatabase() {
+  try {
+    await couch.db.get(DB_NAME);
+    console.log(`Database "${DB_NAME}" exists`);
+  } catch (error: unknown) {
+    if (
+      typeof error === 'object' &&
+      error !== null &&
+      'statusCode' in error &&
+      error.statusCode === 404
+    ) {
+      await couch.db.create(DB_NAME);
+      console.log(`Database "${DB_NAME}" created`);
+    } else {
+      throw error;
+    }
+  }
+}
+
+export const cars_db = couch.db.use(DB_NAME);
+
+export const couchReady = ensureDatabase();
