@@ -5,4 +5,4 @@ if (!process.env.COUCH_URL) {
 }
 
 export const couch = nano(process.env.COUCH_URL);
-export const ticketsDB = couch.db.use('ticket_db');
+export const cars_db = couch.db.use('cars_db');

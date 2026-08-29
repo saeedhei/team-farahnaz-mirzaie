@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { ticketsDB } from '../../lib/couchdb';
+import { cars_db, couch } from '../../lib/couchdb';
 
 // 1. خواندن لیست ماشین‌ها (Read)
 export async function GET() {
   try {
-    const result = await ticketsDB.list({ include_docs: true });
+    const result = await cars_db.list({ include_docs: true });
     const cars = result.rows.map((row: any) => row.doc);
     return NextResponse.json(cars);
   } catch (error) {
@@ -16,7 +16,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const response = await ticketsDB.insert(body);
+    const response = await cars_db.insert(body);
     return NextResponse.json({ success: true, response });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to create car' }, { status: 500 });
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json(); // باید شامل _id و _rev و اطلاعات جدید باشد
-    const response = await ticketsDB.insert(body);
+    const response = await cars_db.insert(body);
     return NextResponse.json({ success: true, response });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to update car' }, { status: 500 });
@@ -45,7 +45,7 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'ID and Rev are required' }, { status: 400 });
     }
 
-    const response = await ticketsDB.destroy(id, rev);
+    const response = await cars_db.destroy(id, rev);
     return NextResponse.json({ success: true, response });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to delete car' }, { status: 500 });
