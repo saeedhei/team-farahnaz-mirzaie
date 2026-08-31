@@ -16,7 +16,7 @@ async function getCars(): Promise<Car[]> {
     });
 
     if (!res.ok) {
-      throw new Error(Failed to fetch cars: ${res.status});
+      throw new Error(`Failed to fetch cars: ${res.status}`);
     }
 
     return res.json();
@@ -61,7 +61,7 @@ export default async function Home() {
                       const newDescription = prompt("Enter new description:", car.description);
                       
                       if (newTitle && newDescription) {
-                        await fetch(http://localhost:3000/api/cars/${car._id}, {
+                        await fetch(`http://localhost:3000/api/cars/${car._id}`, {
                           method: 'PUT',
                           headers: {
                             'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ export default async function Home() {
                   <button 
                     onClick={async () => {
                       if (confirm("Are you sure you want to delete this car?")) {
-                        await fetch(http://localhost:3000/api/cars/${car._id}, {
+                        await fetch(`http://localhost:3000/api/cars/${car._id}`, {
                           method: 'DELETE',
                         });
                         window.location.reload();
@@ -102,3 +102,4 @@ export default async function Home() {
       </div>
     </main>
   );
+}
