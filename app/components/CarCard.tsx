@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function CarCard({ car }: { car: any }) {
   const carId = car._id || car.id || car.key;
@@ -16,16 +16,16 @@ export default function CarCard({ car }: { car: any }) {
 
     if (newTitle && newDescription) {
       try {
-        const res = await fetch('/api/cars/' + carId, {
-          method: 'PUT',
+        const res = await fetch(`/api/cars/${carId}`, {
+          method: "PUT",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             title: newTitle,
             description: newDescription,
             image: car.image,
-            _rev: car._rev
+            _rev: car._rev,
           }),
         });
 
@@ -50,10 +50,9 @@ export default function CarCard({ car }: { car: any }) {
 
     if (confirm("Are you sure you want to delete this car?")) {
       try {
-       const res = await fetch(`/api/cars/${carId}`, {
-  method: 'DELETE',
-});
-        
+        const res = await fetch(`/api/cars/${carId}`, {
+          method: "DELETE",
+        });
 
         const data = await res.json();
         if (res.ok) {
@@ -72,25 +71,25 @@ export default function CarCard({ car }: { car: any }) {
     <div className="border p-4 rounded-lg shadow-md bg-white">
       {car.image && (
         <div className="relative h-48 w-full mb-4">
-          <Image 
-            src={car.image} 
-            alt={car.title || 'Car'} 
-            fill 
+          <Image
+            src={car.image}
+            alt={car.title || "Car"}
+            fill
             className="object-cover rounded-md"
           />
         </div>
       )}
       <h2 className="text-xl font-bold mb-2">{car.title}</h2>
       <p className="text-gray-600 mb-4">{car.description}</p>
-      
+
       <div className="flex gap-2">
-        <button 
+        <button
           onClick={handleEdit}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Edit
         </button>
-        <button 
+        <button
           onClick={handleDelete}
           className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
         >
