@@ -15,7 +15,8 @@ type Car = {
 
 export default function CarCard({ car }: { car: Car }) {
   const router = useRouter();
-  const carId = car._id || car.id || car.key;
+  const carId = car._id || car.id || (car as any).id;
+  console.log('car ID is:', carId, 'car object is:', car);
 
   const handleEdit = async () => {
     if (!carId) {
