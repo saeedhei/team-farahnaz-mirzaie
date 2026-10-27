@@ -1,19 +1,26 @@
 import type { Metadata } from 'next';
-import { Vazirmatn } from 'next/font/google';
+import { Vazirmatn, Inter } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-// استفاده از فونت وزیرمتن از گوگل
+// Persian Font (Vazirmatn)
 const vazirmatn = Vazirmatn({
-  subsets: ['arabic', 'latin'],
+  subsets: ['arabic'],
   variable: '--font-vazirmatn',
   display: 'swap',
 });
 
+// English Font (Inter)
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  title: 'گالری خودروهای لوکس',
-  description: 'پروژه تمرینی با Next.js و Shadcn UI',
+  title: 'Luxury Car Gallery',
+  description: 'A practice project built with Next.js and Shadcn UI',
 };
 
 export default function RootLayout({
@@ -22,8 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl" className={vazirmatn.variable}>
-      <body className={`${vazirmatn.className} antialiased flex flex-col min-h-screen`}>
+    // We add both font classes to the html tag
+    <html lang="en" dir="ltr" className={`${vazirmatn.variable} ${inter.variable}`}>
+      <body className="antialiased flex flex-col min-h-screen">
         <Header />
         <main className="grow">{children}</main>
         <Footer />
