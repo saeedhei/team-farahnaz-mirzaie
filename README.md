@@ -2,46 +2,40 @@
 
 A modern web application built for managing a luxury and sports car gallery, featuring full **CRUD** (Create, Read, Update, Delete) operations.
 
----
+## 🚀 New Features (Redis Caching)
 
-## 🚀 Features
+We have implemented a high-performance Redis caching layer to optimize the API and reduce the load on the primary database (CouchDB).
 
-- **View Cars (Read):** Browse a list of luxury and sports cars with detailed information and images.
-- **Add Cars (Create):** Register new vehicles into the gallery system using a dedicated form.
-- **Edit/Update Cars (Update):** Modify existing car details easily.
-- **Delete Cars (Delete):** Remove cars from the gallery database.
-- **Responsive UI:** Clean and modern interface built with **Tailwind CSS** and **Next.js**.
-
----
+- **GET Requests:** Responses are cached with a 5-minute Time-To-Live (TTL), reducing response times from ~400ms to ~15ms.
+- **Cache Invalidation:** Any data modification (`POST`, `PUT`, `DELETE`) automatically invalidates the relevant cache to ensure data consistency.
 
 ## 🛠️ Tech Stack
 
-- Frontend / Framework: `Next.js`
-- Styling: `Tailwind CSS`
-
----
+- **Frontend / Framework:** `Next.js`
+- **Styling:** `Tailwind CSS`
+- **Database:** `CouchDB`
+- **Caching:** `Redis` (via Docker)
 
 ## ⚙️ Prerequisites
 
-Before you start, make sure you have installed:
-- `Node.js` (v18 or higher recommended)
-- `npm` or `yarn`
+- `Node.js` (v18 or higher)
+- `Docker` (for running CouchDB and Redis)
 
----
-
-## 📦 Installation & Setup
-
-Clone the repository and install dependencies using the following commands:
+## 🚀 Installation & Setup
 
 ```bash
 # Clone the repository
-git clone [https://github.com/your-username/car-gallery.git](https://github.com/your-username/car-gallery.git)
+git clone https://github.com/Farah5613/team-farah-naz-mirzaie.git
 
 # Navigate to the project directory
-cd car-gallery
+cd team-farah-naz-mirzaie
 
 # Install dependencies
 npm install
 
+# Start Database and Redis via Docker
+docker compose up -d
+
 # Run the development server
 npm run dev
+```
